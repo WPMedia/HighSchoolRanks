@@ -69,6 +69,7 @@ end
 def normalize(ranks)
   ranks = json_safe_ints(ranks)
   ranks = strip_keys(ranks)
+  ranks = parse_address(ranks)
 
   return ranks
 end
@@ -133,6 +134,20 @@ def strip_keys(ranks)
 
   return items
 end
+
+def parse_address(ranks)
+  ranks.each do |school|
+    if school["school_address"]
+      address_line = school["school_address"]
+      address_parts = address_line.split(",").map(&:strip)
+      school["school_address_city"] = address_parts[2] || ''
+      school["school_address_state"] = address_parts[3] || ''
+    end
+  end
+
+  return ranks
+end
+
 
 
 data = fetch()
