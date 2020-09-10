@@ -4,7 +4,7 @@ GEM
     csv (1.0.2)
     faraday (0.15.1)
       multipart-post (>= 1.2, < 3)
-    json (2.1.0)
+    json (2.3.0)
     multipart-post (2.0.0)
 
 PLATFORMS
